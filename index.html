@@ -1,0 +1,44 @@
+<!doctype html>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<script src="js/vue.js"></script>
+<!--<script src="js/vue.min.js"></script>-->
+
+<h1>BCKW</h1>
+
+<div id="app">
+<h2>プログラム</h2>
+<input v-model="program" value="((B(CK))W)">
+<h2>字句解析</h2>
+{{ tokens }}
+<h2>構文解析</h2>
+</div>
+
+<script>
+
+var app = new Vue({
+    el: "#app",
+    data: {
+        program: "",
+    },
+    computed: {
+        tokens: function() {
+            return this.lexer(this.program);
+        },
+    },
+    methods: {
+        lexer: function(s) {
+            var res = [];
+            for(var c of s){
+                if(c == " ") continue;
+                res.push(c);
+            }
+            return res;
+        },
+        parser: function(tokens) {
+            
+        }
+    }
+});
+</script>
